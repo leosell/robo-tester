@@ -1,0 +1,16 @@
+{
+  "name": "gerador_teste",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Leonardo Sell",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.20",
+    "puppeteer": "^19.6.0"
+  }
+}
