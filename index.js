@@ -27,11 +27,10 @@ import puppeteer from "puppeteer";
 
 
     // Entrando em um atendimento
-    // await page.click('document.querySelector("#page-content > div.chakra-table__container.css-1hgy397 > table > tbody > tr:nth-child(1) > td:nth-child(1)")')
-    const selector = 'document.querySelector("#page-content > div.chakra-table__container.css-1hgy397 > table > tbody > tr:nth-child(1) > td:nth-child(1)")';
+    const searchResultSelector = 'xpath/html/body/div[1]/div[2]/div[2]/div[2]/table/tbody/tr[1]/td[1]'
 
-    await page.waitForSelector(selector);
+    await page.waitForSelector(searchResultSelector);
 
-    await page.click(selector);
+    await page.click(searchResultSelector);
 
 })()
