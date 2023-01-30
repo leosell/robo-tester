@@ -51,10 +51,26 @@ import puppeteer from "puppeteer";
 
     // Consulta offline
     const offConsult = 'xpath/html/body/div[4]/div[3]/div/section/footer/button[4]'
-    await page.click(offConsult)
-    const confirmConsult = 'xpath/html/body/div[5]/div[3]/div/section/footer/button[2]'
-    await page.waitForSelector(confirmConsult)
-    await page.click(confirmConsult)
+    // await page.click(offConsult)
+
+    if (offConsult) {
+        const confirmConsult = 'xpath/html/body/div[5]/div[3]/div/section/footer/button[2]'
+        await page.waitForSelector(confirmConsult)
+        await page.click(confirmConsult)
+
+        // Carregando page
+        console.log('antes de carregar page')
+        await page.waitForTimeout(2000)
+        console.log('carregamento page')
+
+
+        // Button salvar alterações
+        const buttonSaveAlteracoes = 'xpath/html/body/div[4]/div[3]/div/section/footer/button[6]'
+        console.log(buttonSaveAlteracoes)
+        await page.click(buttonSaveAlteracoes)
+        console.log('passou click')
+
+    }
 
     // Carregando page
     console.log('antes de carregar page')
@@ -76,6 +92,7 @@ import puppeteer from "puppeteer";
 
     console.log('antes de clicar in100')
     const buttonIn100 = 'xpath/html/body/div[4]/div[3]/div/section/footer/button[3]'
+    await page.click(buttonIn100)
     console.log('depois de clicar in100')
 
     if (buttonIn100) {
