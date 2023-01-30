@@ -6,8 +6,8 @@ import puppeteer from "puppeteer";
     
     // Acesso ao site
     const page = await browser.newPage()
-    await page.goto('https://powerhub-ebon.vercel.app')
-    await page.setViewport({ width: 1680, height: 600})
+    await page.goto('https://www.novapowerhub.com.br')
+    await page.setViewport({ width: 1920, height: 930})
 
     
     // Login
@@ -18,12 +18,12 @@ import puppeteer from "puppeteer";
     await page.click('#root > div > div > button')
 
 
-    // Carregando page
+    // Carregando pag3
     await page.waitForNavigation()
 
 
     // Caminho até o atendimento
-    await page.goto('https://powerhub-ebon.vercel.app/atendimentos')
+    await page.goto('https://www.novapowerhub.com.br/atendimentos')
 
 
     // Entrando em um atendimento
@@ -56,13 +56,36 @@ import puppeteer from "puppeteer";
     await page.waitForSelector(confirmConsult)
     await page.click(confirmConsult)
 
-
     // Carregando page
-    await page.waitForNavigation()
+    console.log('antes de carregar page')
+    await page.waitForTimeout(2000)
+    console.log('carregamento page')
 
 
     // Button salvar alterações
-    const button = 'xpath/html/body/div[4]/div[3]/div/section/footer/button[6]'
-    await page.click(button)
+    const buttonSaveAlteracoes = 'xpath/html/body/div[4]/div[3]/div/section/footer/button[6]'
+    console.log(buttonSaveAlteracoes)
+    await page.click(buttonSaveAlteracoes)
+    console.log('passou click')
 
+
+
+
+
+    // IN100
+
+    console.log('antes de clicar in100')
+    const buttonIn100 = 'xpath/html/body/div[4]/div[3]/div/section/footer/button[3]'
+    console.log('depois de clicar in100')
+
+    if (buttonIn100) {
+        console.log('entrou if')
+        await page.waitForTimeout(2000)
+        console.log('antes de clicar save in100')
+        const buttonSaveIn100 = 'xpath/html/body/div[5]/div[3]/div/section/footer/button[2]'
+        console.log('depois de clicar save in100')
+        await page.click(buttonSaveIn100)
+        await page.waitForTimeout(2000)
+        await page.click(buttonSaveAlteracoes)
+    }
 })()
