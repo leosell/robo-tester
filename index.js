@@ -7,7 +7,7 @@ import puppeteer from "puppeteer";
     // Acesso ao site
     const page = await browser.newPage()
     await page.goto('https://powerhub-ebon.vercel.app')
-    await page.setViewport({ width: 1680, height: 800})
+    await page.setViewport({ width: 1680, height: 600})
 
     
     // Login
@@ -32,5 +32,37 @@ import puppeteer from "puppeteer";
     await page.waitForSelector(searchResultSelector);
 
     await page.click(searchResultSelector);
+
+    const searchResultPage = 'xpath/html/body/div[4]/div[3]/div/section/div/div/div[1]/div[2]/div[4]/p'
+    await page.waitForSelector(searchResultPage)
+    await page.click(searchResultPage)
+
+
+    // Input beneficio
+    // const inputNb = 'xpath/html/body/div[4]/div[3]/div/section/div/div/div[1]/div[3]/div[1]/div[1]/input'
+    // await page.click(inputNb)
+    // await page.type(inputNb, '1514730836')
+
+
+    // Button salvar alterações
+    // const button = 'xpath/html/body/div[4]/div[3]/div/section/footer/button[6]'
+    // await page.click(button)
+
+
+    // Consulta offline
+    const offConsult = 'xpath/html/body/div[4]/div[3]/div/section/footer/button[4]'
+    await page.click(offConsult)
+    const confirmConsult = 'xpath/html/body/div[5]/div[3]/div/section/footer/button[2]'
+    await page.waitForSelector(confirmConsult)
+    await page.click(confirmConsult)
+
+
+    // Carregando page
+    await page.waitForNavigation()
+
+
+    // Button salvar alterações
+    const button = 'xpath/html/body/div[4]/div[3]/div/section/footer/button[6]'
+    await page.click(button)
 
 })()
